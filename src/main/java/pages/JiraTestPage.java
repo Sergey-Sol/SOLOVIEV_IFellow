@@ -9,7 +9,7 @@ public class JiraTestPage {
     private final SelenideElement tasksCounter = $x("//div[@class='showing']/child::span");
     private final SelenideElement task = $x("//a[@class='issue-link']");
     private final SelenideElement insertSearchValue = $x("//input[@id='quickSearchInput']");
-    private final  SelenideElement searchResult = $x("//*[@id=\"quicksearch\"]/div[1]/div[1]/ul/li[1]/a");
+    private final SelenideElement searchResult = $x("//*[@id=\"quicksearch\"]/div[1]/div[1]/ul/li[1]/a");
     private final SelenideElement createTask = $x("//a[@title=\"Создать новую задачу ( Нажмите 'c' )\"]");
     private final SelenideElement inputTaskTheme = $x("//input[@id='summary']");
     private final SelenideElement createButton = $x("//input[@value='Создать']");
