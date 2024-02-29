@@ -3,8 +3,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.page;
-public class JiraDashboardPage {
 
+public class JiraDashboardPage {
     private final SelenideElement userAfterAuthorization = $x("//a[contains(@title,'Пользовательский')]");
     private final SelenideElement projects = $x("//a[text()='Проекты']");
     private final SelenideElement test = $x("//a[text()='Test (TEST)']");
