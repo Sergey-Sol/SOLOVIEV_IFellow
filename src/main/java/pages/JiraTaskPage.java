@@ -9,20 +9,18 @@ public class JiraTaskPage {
     private final SelenideElement make = $x("//span[text()='Сделать']");
     private final SelenideElement fixInVersions = $x("//strong[@title='Исправить в версиях']/following-sibling::span");
 
-    public JiraTaskPage checkTaskStatus(String expectedText) {
+    public void checkTaskStatus(String expectedText) {
         make.shouldBe(Condition.visible)
                 .shouldHave(Condition.text(expectedText));
-        return this;
     }
 
     public String checkTaskStatusAssert() {
         return make.getText();
     }
 
-    public JiraTaskPage checkTaskFixInVersions(String expectedText) {
+    public void checkTaskFixInVersions(String expectedText) {
         fixInVersions.shouldBe(Condition.visible)
                 .shouldHave(Condition.text(expectedText));
-        return this;
     }
 
     public String checkTaskFixInVersionsAssert() {

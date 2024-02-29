@@ -1,5 +1,6 @@
 package jiraTest;
 import com.codeborne.selenide.Selenide;
+import hooks.WebHooks;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -79,7 +80,6 @@ public class JiraTest extends WebHooks {
         System.out.println(initialTasksCount);
         JiraTestPage.createNewTask("Тема_Соловьев","Описание");
         Selenide.refresh();
-        //Selenide.sleep(2000);
         JiraTestPage.checkPageTitle("TEST");
         updatedTasksCount = JiraTestPage.getTasksCountValue();
         System.out.println(updatedTasksCount);

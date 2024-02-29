@@ -7,7 +7,6 @@ public class JiraTestPage {
 
     private final SelenideElement testPage = $x("//h1[text()='TEST']");
     private final SelenideElement tasksCounter = $x("//div[@class='showing']/child::span");
-    private final SelenideElement task = $x("//a[@class='issue-link']");
     private final SelenideElement insertSearchValue = $x("//input[@id='quickSearchInput']");
     private final SelenideElement searchResult = $x("//span[@aria-tooltip=\"TestSelenium\"]");
     private final SelenideElement createTask = $x("//a[@title=\"Создать новую задачу ( Нажмите 'c' )\"]");
@@ -17,10 +16,9 @@ public class JiraTestPage {
     private final SelenideElement checkNewTask = $x("//a[@class='issue-created-key issue-link']");
     private final SelenideElement projects = $x("//a[text()='Проекты']");
 
-    public JiraTestPage checkPageTitle(String expectedText) {
+    public void checkPageTitle(String expectedText) {
         testPage.shouldBe(Condition.visible)
         .shouldHave(Condition.text(expectedText));
-        return this;
     }
 
     public JiraTaskPage quickSearch (String searchValue) {
@@ -37,13 +35,8 @@ public class JiraTestPage {
 
     public int getTasksCountValue() {
         String tasksCountText = tasksCounter.getText();
-        int startIndex = tasksCountText.lastIndexOf(' ') + 1;
         String[] parts = tasksCountText.split(" ");
         return Integer.parseInt(parts[2]);
-    }
-
-    public void goToTask() {
-        task.click();
     }
 
     public void createNewTask(String taskTheme, String description) {
