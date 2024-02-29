@@ -2,7 +2,7 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
-public class JiraReportedByMe {
+public class JiraReportedByMePage {
     private final SelenideElement tasks = $x("//a[text()='Задачи']");
     private final SelenideElement reportedByMe = $x("//a[text()='Сообщенные мной']");
     private final SelenideElement myLatestTask = $x("//li[@class='focused']");

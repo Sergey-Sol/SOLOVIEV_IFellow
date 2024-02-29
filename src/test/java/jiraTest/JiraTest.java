@@ -12,7 +12,7 @@ public class JiraTest extends WebHooks {
     private final JiraDashboardPage JiraDashboardPage = new JiraDashboardPage();
     private final JiraTestPage JiraTestPage = new JiraTestPage();
     private final JiraTaskPage JiraTaskPage = new JiraTaskPage();
-    private final JiraReportedByMe JiraReportedByMe = new JiraReportedByMe();
+    private final JiraReportedByMePage JiraReportedByMePage = new JiraReportedByMePage();
 
     private int initialTasksCount;
     private int updatedTasksCount;
@@ -90,17 +90,17 @@ public class JiraTest extends WebHooks {
     @DisplayName("Перевод задачи в статус 'В РАБОТЕ'")
     public void atWorkStatusTest() {
         JiraAuthorizationPage.login("AT9", "Qwerty123");
-        JiraReportedByMe.goToMyNewTask();
-        JiraReportedByMe.atWork();
-        Assertions.assertEquals("В РАБОТЕ", JiraReportedByMe.checkStatusTask());
+        JiraReportedByMePage.goToMyNewTask();
+        JiraReportedByMePage.atWork();
+        Assertions.assertEquals("В РАБОТЕ", JiraReportedByMePage.checkStatusTask());
     }
 
     @Test
     @DisplayName("Перевод задачи в статус 'ГОТОВО'")
     public void doneStatusTest() {
         JiraAuthorizationPage.login("AT9", "Qwerty123");
-        JiraReportedByMe.goToMyNewTask();
-        JiraReportedByMe.done();
-        Assertions.assertEquals("ГОТОВО", JiraReportedByMe.checkStatusTask());
+        JiraReportedByMePage.goToMyNewTask();
+        JiraReportedByMePage.done();
+        Assertions.assertEquals("ГОТОВО", JiraReportedByMePage.checkStatusTask());
     }
 }
