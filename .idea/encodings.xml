@@ -2,9 +2,28 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/pages/ReportedPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/RunTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/hooks/WebHooks.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/jiraTest/JiraTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/jiraTest/JiraTest2.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/steps/AuthorizationSteps.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/steps/CounterSteps.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/steps/DashboardSteps.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/steps/DoneSteps.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/steps/MakeSteps.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/steps/TaskSteps.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/steps/VersionsSteps.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/steps/WorkSteps.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/tests/TestClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/features/auth.feature" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/features/counter.feature" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/features/done.feature" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/features/make.feature" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/features/project.feature" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/features/task.feature" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/features/versions.feature" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/features/work.feature" charset="UTF-8" />
   </component>
 </project>

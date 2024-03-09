@@ -1,8 +1,10 @@
 package pages;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
-public class JiraReportedByMePage {
+
+public class ReportedPage {
     private final SelenideElement tasks = $x("//a[text()='Задачи']");
     private final SelenideElement reportedByMe = $x("//a[text()='Сообщенные мной']");
     private final SelenideElement myLatestTask = $x("//li[@class='focused']");
@@ -12,7 +14,7 @@ public class JiraReportedByMePage {
     private final SelenideElement buisnessProcessButton = $x("//span[starts-with(text(),'Бизнес-процесс')]");
     private final SelenideElement doneButton = $x("//span[starts-with(text(),'Выполнено')]");
     private final SelenideElement titlePage = $x("//h1[text()='Сообщенные мной']");
-    private final SelenideElement done = $x("//span[@id=\"status-val\"]/child::span[starts-with(text(),'Готово')]");
+    private final SelenideElement done = $x("//span[@id='status-val']/child::span[starts-with(text(),'Готово')]");
 
     public void goToMyNewTask() {
         tasks.shouldBe(Condition.visible);

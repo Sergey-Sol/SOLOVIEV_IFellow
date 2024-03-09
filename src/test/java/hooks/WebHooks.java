@@ -3,14 +3,14 @@ package hooks;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class WebHooks {
 
-    @BeforeEach
+    @Before
     public void initBrowser() {
         Configuration.browser ="chrome";
         Configuration.timeout = 10000;
@@ -21,8 +21,9 @@ public class WebHooks {
         WebDriverRunner.setWebDriver(driver);
 
         Selenide.open("https://edujira.ifellow.ru/secure/Dashboard.jspa");
+
     }
-    @AfterEach
+    @After
     public void tearDown() {
         WebDriverRunner.closeWebDriver();
     }
