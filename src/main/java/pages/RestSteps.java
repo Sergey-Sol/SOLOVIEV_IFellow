@@ -36,7 +36,7 @@ public class RestSteps {
         Assert.assertNotEquals(lastCharacterLocation, mortyResponse.jsonPath().getString("results[0].location.name"));
         Assert.assertEquals(lastCharacterRace, mortyResponse.jsonPath().getString("results[0].species"));
     }
-    public void reqRespTest(String baseUri, String postUri, String body, int statusCode){
+    public void createUser(String baseUri, String postUri, String body, int statusCode){
         given()
                 .header("Content-type", "application/json")
                 .header("Charset", "UTF-8")

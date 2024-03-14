@@ -7,7 +7,7 @@ import pages.RestSteps;
 
 public class RickAndMortyTest extends WebHooks {
     @Test
-    public void сompareMortyTest(){
+    public void сompareСharactersTest(){
         new RestSteps()
                 .сompareСharacters("https://rickandmortyapi.com/api",200);
     }

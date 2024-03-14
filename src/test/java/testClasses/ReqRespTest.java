@@ -15,6 +15,6 @@ public class ReqRespTest extends WebHooks{
         JSONObject body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/test/resources/json/paren.json"))));
 
         new RestSteps()
-                .reqRespTest("https://reqres.in", "/api/users", body.toString(), 201);
+                .createUser("https://reqres.in", "/api/users", body.toString(), 201);
     }
 }
