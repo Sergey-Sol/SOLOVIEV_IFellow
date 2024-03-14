@@ -1,30 +1,22 @@
 package hooks;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import io.restassured.RestAssured;
+import io.restassured.filter.Filter;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import org.junit.jupiter.api.BeforeEach;
+import java.util.Arrays;
+import java.util.List;
 
 public class WebHooks {
+    @BeforeEach
+    public void beforeEach(){
+        Filter requestLogFilter = new RequestLoggingFilter(LogDetail.ALL);
+        Filter responseLogFilter = new ResponseLoggingFilter(LogDetail.ALL);
 
-    @Before
-    public void initBrowser() {
-        Configuration.browser ="chrome";
-        Configuration.timeout = 10000;
+        List<Filter> filters = Arrays.asList(requestLogFilter, responseLogFilter);
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized", "--disable-notifications");
-        ChromeDriver driver = new ChromeDriver(options);
-        WebDriverRunner.setWebDriver(driver);
-
-        Selenide.open("https://edujira.ifellow.ru/secure/Dashboard.jspa");
-
-    }
-    @After
-    public void tearDown() {
-        WebDriverRunner.closeWebDriver();
+        RestAssured.filters(filters);
     }
 }

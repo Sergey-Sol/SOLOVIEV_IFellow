@@ -16,7 +16,7 @@
     <file url="file://$PROJECT_DIR$/src/test/java/steps/TaskSteps.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/steps/VersionsSteps.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/steps/WorkSteps.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/tests/TestClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/testClasses/RickAndMortyTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/resources/features/auth.feature" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/resources/features/counter.feature" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/resources/features/done.feature" charset="UTF-8" />
