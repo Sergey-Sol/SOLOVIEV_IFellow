@@ -1,11 +1,10 @@
-package pages;
+package steps;
 
 import io.restassured.response.Response;
 import org.junit.Assert;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.equalTo;
 
-public class RestSteps {
+public class RAMSteps {
 
     public void сompareСharacters(String baseUri, int statusCode){
         Response mortyResponse = given()
@@ -36,17 +35,5 @@ public class RestSteps {
         Assert.assertNotEquals(lastCharacterLocation, mortyResponse.jsonPath().getString("results[0].location.name"));
         Assert.assertEquals(lastCharacterRace, mortyResponse.jsonPath().getString("results[0].species"));
     }
-    public void createUser(String baseUri, String postUri, String body, int statusCode){
-        given()
-                .header("Content-type", "application/json")
-                .header("Charset", "UTF-8")
-                .baseUri(baseUri)
-                .body(body)
-                .when()
-                .post(postUri)
-                .then()
-                .statusCode(statusCode)
-                .body("name", equalTo("Tomato"))
-                .body("job", equalTo("Eat maket"));
-    }
+
 }

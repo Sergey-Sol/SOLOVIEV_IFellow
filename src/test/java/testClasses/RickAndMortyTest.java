@@ -2,13 +2,13 @@ package testClasses;
 
 import hooks.WebHooks;
 import org.junit.jupiter.api.Test;
-import pages.RestSteps;
+import steps.RAMSteps;
 
 
 public class RickAndMortyTest extends WebHooks {
     @Test
     public void сompareСharactersTest(){
-        new RestSteps()
+        new RAMSteps()
                 .сompareСharacters("https://rickandmortyapi.com/api",200);
     }
 }
