@@ -2,9 +2,6 @@
 
 /*
 !/src/
-!/src/main/
-/src/main/*
-!/src/main/resources/
 !/pom.xml
 !/README.md
 !/.gitignore
