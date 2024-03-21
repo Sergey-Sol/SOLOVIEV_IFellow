@@ -1,0 +1,8 @@
+/*
+!/src/
+!/pom.xml
+!/README.md
+!/.gitignore
+
+/**/*
+!/**/src/

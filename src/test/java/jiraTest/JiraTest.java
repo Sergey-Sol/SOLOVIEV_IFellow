@@ -1,18 +1,29 @@
 package jiraTest;
+
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import hooks.WebHooks;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.*;
+import readConf.ConfigProvider;
 
+@DisplayName("JiraTest")
 public class JiraTest extends WebHooks {
 
-    private final JiraAuthorizationPage JiraAuthorizationPage = new JiraAuthorizationPage();
     private final JiraDashboardPage JiraDashboardPage = new JiraDashboardPage();
     private final JiraTestPage JiraTestPage = new JiraTestPage();
     private final JiraTaskPage JiraTaskPage = new JiraTaskPage();
     private final JiraReportedByMePage JiraReportedByMePage = new JiraReportedByMePage();
+
+    private final String username = ConfigProvider.USERNAME;
+    private final String searchValue = ConfigProvider.SEARCHVALUE;
+    private final String taskStatus = "СДЕЛАТЬ";
+    private final String versionTask = "Version 2.0";
+    private final String taskTheme = "Тема_Соловьев";
+    private final String taskDescription = "Описание";
 
     private int initialTasksCount;
     private int updatedTasksCount;
@@ -20,87 +31,70 @@ public class JiraTest extends WebHooks {
     @Test
     @DisplayName("Проверка авторизации")
     public void jiraAuthorizationTest() {
-        String username = "AT9";
-        String password = "Qwerty123";
-        JiraAuthorizationPage.login(username, password);
-        Assertions.assertEquals(username, JiraDashboardPage.userIsLoggedInAttribute());
+        JiraDashboardPage.userIsLoggedInAttribute().shouldHave(Condition.attribute("data-username", username));
     }
 
     @Test
     @DisplayName("Переход на страницу проекта 'TEST'")
     public void goToProjectTest() {
-        String username = "AT9";
-        String password = "Qwerty123";
-        JiraAuthorizationPage.login(username, password)
-                .goToProjects()
+                JiraDashboardPage.goToProjects()
                 .checkPageTitle("TEST");
-        Assertions.assertEquals("TEST", JiraTestPage.checkPageTitleAssert());
+        JiraTestPage.checkPageTitleAssert().shouldHave(Condition.text("TEST"));
     }
 
     @Test
+    @Feature("Проверка задачи 'TestSelenium'")
     @DisplayName("Переход на задачу 'TestSelenium'")
     public void quickSearchTest() {
-        String username = "AT9";
-        String password = "Qwerty123";
-        String searchValue = "TestSelenium";
-        JiraAuthorizationPage.login(username, password);
         JiraTestPage.quickSearch(searchValue);
-        Assertions.assertEquals(searchValue, JiraTaskPage.pageIsTask());
+        JiraTaskPage.pageIsTask().shouldHave(Condition.text(searchValue));
     }
 
     @Test
+    @Feature("Проверка задачи 'TestSelenium'")
     @DisplayName("Проверка статуса задачи 'TestSelenium': 'СДЕЛАТЬ'")
     public void checkTaskStatusTest() {
-        String username = "AT9";
-        String password = "Qwerty123";
-        String searchValue = "TestSelenium";
-        JiraAuthorizationPage.login(username, password);
         JiraTestPage.quickSearch(searchValue)
-                .checkTaskStatus("СДЕЛАТЬ");
-        Assertions.assertEquals("СДЕЛАТЬ", JiraTaskPage.checkTaskStatusAssert());
+                .checkTaskStatus(taskStatus);
+        JiraTaskPage.checkTaskStatusAssert().shouldHave(Condition.text(taskStatus));
     }
 
     @Test
+    @Feature("Проверка задачи 'TestSelenium'")
     @DisplayName("Проверка поля: 'Исправить в версиях' в задаче 'TestSelenium'")
     public void checkTaskFixInVersionsTest() {
-        String username = "AT9";
-        String password = "Qwerty123";
-        String searchValue = "TestSelenium";
-        JiraAuthorizationPage.login(username, password);
         JiraTestPage.quickSearch(searchValue)
-                .checkTaskFixInVersions("Version 2.0");
-        Assertions.assertEquals("Version 2.0", JiraTaskPage.checkTaskFixInVersionsAssert());
+                .checkTaskFixInVersions(versionTask);
+        JiraTaskPage.checkTaskFixInVersionsAssert().shouldHave(Condition.text(versionTask));
     }
 
     @Test
     @DisplayName("Проверка значения счетчика после создания бага")
     public void checkTasksCountTest() {
-        JiraAuthorizationPage.login("AT9", "Qwerty123").goToProjects();
+        JiraDashboardPage.goToProjects();
         initialTasksCount = JiraTestPage.getTasksCountValue();
-        System.out.println(initialTasksCount);
-        JiraTestPage.createNewTask("Тема_Соловьев","Описание");
+        JiraTestPage.createNewTask(taskTheme,taskDescription);
         Selenide.refresh();
         JiraTestPage.checkPageTitle("TEST");
         updatedTasksCount = JiraTestPage.getTasksCountValue();
-        System.out.println(updatedTasksCount);
         Assertions.assertEquals(initialTasksCount, updatedTasksCount - 1);
     }
 
     @Test
+    @Feature("Смена статуса задачи")
     @DisplayName("Перевод задачи в статус 'В РАБОТЕ'")
     public void atWorkStatusTest() {
-        JiraAuthorizationPage.login("AT9", "Qwerty123");
         JiraReportedByMePage.goToMyNewTask();
         JiraReportedByMePage.atWork();
-        Assertions.assertEquals("В РАБОТЕ", JiraReportedByMePage.checkStatusTask());
+        JiraReportedByMePage.checkStatusTask().shouldHave(Condition.text("В РАБОТЕ"));
     }
 
     @Test
+    @Feature("Смена статуса задачи")
     @DisplayName("Перевод задачи в статус 'ГОТОВО'")
     public void doneStatusTest() {
-        JiraAuthorizationPage.login("AT9", "Qwerty123");
         JiraReportedByMePage.goToMyNewTask();
         JiraReportedByMePage.done();
-        Assertions.assertEquals("ГОТОВО", JiraReportedByMePage.checkStatusTask());
+        JiraReportedByMePage.checkStatusTask().shouldHave(Condition.text("ГОТОВО"));
     }
 }
