@@ -20,13 +20,6 @@ public class JiraTest extends WebHooks {
 
     private final String username = ConfigProvider.USERNAME;
     private final String searchValue = ConfigProvider.SEARCHVALUE;
-    private final String taskStatus = "СДЕЛАТЬ";
-    private final String versionTask = "Version 2.0";
-    private final String taskTheme = "Тема_Соловьев";
-    private final String taskDescription = "Описание";
-
-    private int initialTasksCount;
-    private int updatedTasksCount;
 
     @Test
     @DisplayName("Проверка авторизации")
@@ -54,6 +47,7 @@ public class JiraTest extends WebHooks {
     @Feature("Проверка задачи 'TestSelenium'")
     @DisplayName("Проверка статуса задачи 'TestSelenium': 'СДЕЛАТЬ'")
     public void checkTaskStatusTest() {
+        String taskStatus = "СДЕЛАТЬ";
         JiraTestPage.quickSearch(searchValue)
                 .checkTaskStatus(taskStatus);
         JiraTaskPage.checkTaskStatusAssert().shouldHave(Condition.text(taskStatus));
@@ -63,6 +57,7 @@ public class JiraTest extends WebHooks {
     @Feature("Проверка задачи 'TestSelenium'")
     @DisplayName("Проверка поля: 'Исправить в версиях' в задаче 'TestSelenium'")
     public void checkTaskFixInVersionsTest() {
+        String versionTask = "Version 2.0";
         JiraTestPage.quickSearch(searchValue)
                 .checkTaskFixInVersions(versionTask);
         JiraTaskPage.checkTaskFixInVersionsAssert().shouldHave(Condition.text(versionTask));
@@ -71,6 +66,10 @@ public class JiraTest extends WebHooks {
     @Test
     @DisplayName("Проверка значения счетчика после создания бага")
     public void checkTasksCountTest() {
+        int initialTasksCount;
+        int updatedTasksCount;
+        String taskTheme = "Тема_Соловьев";
+        String taskDescription = "Описание";
         JiraDashboardPage.goToProjects();
         initialTasksCount = JiraTestPage.getTasksCountValue();
         JiraTestPage.createNewTask(taskTheme,taskDescription);
