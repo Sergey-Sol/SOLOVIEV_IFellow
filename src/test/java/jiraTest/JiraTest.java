@@ -17,14 +17,12 @@ public class JiraTest extends WebHooks {
     private final JiraTestPage JiraTestPage = new JiraTestPage();
     private final JiraTaskPage JiraTaskPage = new JiraTaskPage();
     private final JiraReportedByMePage JiraReportedByMePage = new JiraReportedByMePage();
-
-    private final String username = ConfigProvider.USERNAME;
     private final String searchValue = ConfigProvider.SEARCHVALUE;
 
     @Test
     @DisplayName("Проверка авторизации")
     public void jiraAuthorizationTest() {
-        JiraDashboardPage.userIsLoggedInAttribute().shouldHave(Condition.attribute("data-username", username));
+        JiraDashboardPage.userIsLoggedInAttribute().shouldHave(Condition.attribute("data-username", "AT9"));
     }
 
     @Test
