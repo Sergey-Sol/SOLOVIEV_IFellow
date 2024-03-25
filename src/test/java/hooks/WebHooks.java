@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.Allure;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,9 +26,12 @@ public class WebHooks {
         Selenide.open(ConfigProvider.URL);
         JiraAuthorizationPage authorizationPage = new JiraAuthorizationPage();
         authorizationPage.login(ConfigProvider.USERNAME, ConfigProvider.PASSWORD);
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide(Allure.getLifecycle()));
-    }
 
+        SelenideLogger.addListener("AllureSelenide",
+                new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true));
+    }
     @AfterEach
     public void tearDown() {
         WebDriverRunner.closeWebDriver();
