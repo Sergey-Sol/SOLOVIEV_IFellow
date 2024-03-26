@@ -22,7 +22,7 @@
 
 ## Установка и запуск
 ### Склонируйте репозиторий:
-- ***git clone https://github.com/Sergey-Sol/SOLOVIEV_IFellow.git --branch IF_HW_6***
+- ***git clone https://github.com/Sergey-Sol/SOLOVIEV_IFellow.git --branch FWH_UI***
 ### Установите зависимости и запустите тесты:
 - ***mvn clean install***
 ### Сгенерируйте отчеты:
@@ -39,6 +39,6 @@
 - ***src/main/resources/allure.properties***
 
 ## Ссылки
-***[Репозиторий на GitHub](https://github.com/Sergey-Sol/SOLOVIEV_IFellow/tree/IF_HW_6)***
+***[Репозиторий на GitHub](https://github.com/Sergey-Sol/SOLOVIEV_IFellow/tree/FWH_UI)***
 ## Автор
 *Сергей Соловьев*
