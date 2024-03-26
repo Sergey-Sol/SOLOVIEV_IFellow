@@ -1,10 +1,9 @@
 .idea/
 
 /*
-!/src/
+!/src/**
 !/pom.xml
 !/README.md
-!/.gitignoreпше
-
-/**/*
+!/.gitignore
 !/**/src/
+
